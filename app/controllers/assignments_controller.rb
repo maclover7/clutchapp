@@ -1,10 +1,11 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    @assignments = Assignment.where(user_id: current_user.id).all
   end
 
   # GET /assignments/1
@@ -14,7 +15,7 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/new
   def new
-    @assignment = Assignment.new
+    @assignment = current_user.assignments.build #@assignment = Assignment.new
   end
 
   # GET /assignments/1/edit
@@ -24,7 +25,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments
   # POST /assignments.json
   def create
-    @assignment = Assignment.new(assignment_params)
+    @assignment = current_user.assignments.build(assignment_params) #@assignment = Assignment.new(assignment_params)
 
     respond_to do |format|
       if @assignment.save
@@ -65,6 +66,11 @@ class AssignmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
       @assignment = Assignment.find(params[:id])
+    end
+
+    def correct_user
+      @assignment = current_user.assignments.find_by(id: params[:id])
+      redirect_to assignments_path, notice: "Not authorized to edit this assignment" if @assignment.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

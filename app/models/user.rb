@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+
+  has_many :assignments
+
+  # Omniauth stuff
   def self.find_for_google_oauth2(auth, signed_in_resource=nil)
     user = User.where(email: auth.info.email).first
     unless user
