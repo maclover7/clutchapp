@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :assignments
+
   root to: 'pages#home'
   get '/about' => 'pages#about'
 
