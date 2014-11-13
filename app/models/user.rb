@@ -1,13 +1,13 @@
 class User < ActiveRecord::Base
-  def self.from_omniauth(auth)
-    where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
-  end
-
-  def self.create_from_omniauth(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      user.name = auth["info"]["name"]
-    end
+  def self.find_for_google_oauth2(auth, signed_in_resource=nil)
+    user = User.where(email: auth.info.email).first
+    unless user
+      user = User.create(
+        provider: auth.provider,
+        uid:      auth.uid,
+        name:     auth.info.name,
+        email:    auth.info.email)
+      end
+    user
   end
 end
