@@ -11,9 +11,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_url, notice: "Signed out."
   end
-
-  private
-    def session_params
-      params.require(:session).permit(:provider, :uid)
-    end
 end
