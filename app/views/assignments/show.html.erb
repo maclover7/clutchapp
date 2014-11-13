@@ -5,5 +5,10 @@
   <%= @assignment.name %>
 </p>
 
+<p>
+  <strong>Work Allowed:</strong>
+  <%= @assignment.work_allowed %>
+</p>
+
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
 <%= link_to 'Back', assignments_path %>
