@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  resources :assignments
 
+  # Static pages
   root to: 'pages#home'
   get '/about' => 'pages#about'
+
+  # Scaffolds
+  resources :assignments
+
+  # Auth
+  get 'auth/:provider/callback', to: 'sessions#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
