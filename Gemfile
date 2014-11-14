@@ -14,6 +14,7 @@ gem 'spring',        group: :development
 # Clutch Dependencies
 gem 'figaro'
 gem 'omniauth-google-oauth2'
+gem 'bootstrap-sass'
 
 # Environment Dependencies
 group :development, :test do
