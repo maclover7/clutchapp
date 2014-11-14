@@ -7,19 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <% flash.each do |name, msg| %>
-		<%= content_tag(:div, msg, class: "alert alert-info") %>
-	<% end %>
+  <div class="container">
 
-  <%= yield %>
+    <%= render "layouts/header" %>
 
-  <% if current_user %>
-    Signed in as <%= current_user.name %>
-    <%= link_to "Sign out", signout_path %>
-  <% else %>
-    <%= link_to "Sign in", "/auth/google_oauth2"%>
-  <% end %>
+    <% flash.each do |name, msg| %>
+  		<%= content_tag(:div, msg, class: "alert alert-info") %>
+  	<% end %>
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>
