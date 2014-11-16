@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :is_teacher, only: [:index, :new]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /assignments
@@ -66,6 +67,12 @@ class AssignmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
       @assignment = Assignment.find(params[:id])
+    end
+
+    def is_teacher
+      if current_user.teacher == false
+        redirect_to root_path, notice: "Not authorized"
+      end
     end
 
     def correct_user
