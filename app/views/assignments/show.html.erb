@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <button type="button" class="btn btn-default">
+    <%= link_to "Submit for this assignment!", new_submission_path(:assignment_id => @assignment.id) %>
+  </button>
+</p>
+<br />
+<p>
   <strong>Name:</strong>
   <%= @assignment.name %>
 </p>

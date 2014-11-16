@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_submission, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:show, :edit, :update]
 
   # GET /submissions
   # GET /submissions.json
@@ -15,7 +15,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/new
   def new
-    @submission = current_user.submissions.build #Submission.new
+    @submission = current_user.submissions.build(assignment_id: params[:assignment_id]) #Submission.new
   end
 
   # GET /submissions/1/edit
@@ -25,7 +25,7 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   # POST /submissions.json
   def create
-    @submission = current_user.submissions.build(submission_params) #Submission.new(submission_params)
+    @submission = current_user.submissions.build(submission_params.merge(assignment_id: params[:assignment_id])) #Submission.new(submission_params)
 
     respond_to do |format|
       if @submission.save
@@ -54,13 +54,13 @@ class SubmissionsController < ApplicationController
 
   # DELETE /submissions/1
   # DELETE /submissions/1.json
-  def destroy
-    @submission.destroy
-    respond_to do |format|
-      format.html { redirect_to submissions_url, notice: 'Submission was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  #def destroy
+    #@submission.destroy
+    #respond_to do |format|
+      #format.html { redirect_to submissions_url, notice: 'Submission was successfully destroyed.' }
+      #format.json { head :no_content }
+    #end
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.

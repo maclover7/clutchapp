@@ -15,15 +15,12 @@
   <%= @submission.submitted %>
 </p>
 
-<p>
-  <strong>Assignment:</strong>
-  <%= @submission.assignment_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @submission.user_id %>
-</p>
+<% if @submission.assignment_id? %>
+  <p>
+    <strong>Assignment:</strong>
+    <%= @submission.assignment.name %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_submission_path(@submission) %> |
 <%= link_to 'Back', submissions_path %>
