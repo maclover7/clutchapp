@@ -16,6 +16,11 @@ gem 'figaro'
 gem 'omniauth-google-oauth2'
 gem 'bootstrap-sass'
 
+# Summernote Dependencies
+gem "font-awesome-rails"
+gem 'summernote-rails'
+gem 'jquery-turbolinks'
+
 # Environment Dependencies
 group :development, :test do
   gem 'sqlite3'
