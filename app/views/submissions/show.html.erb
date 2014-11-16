@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @submission.body %>
-</p>
-
-<p>
   <strong>Submitted:</strong>
   <%= @submission.submitted %>
 </p>
@@ -21,6 +16,14 @@
     <%= @submission.assignment.name %>
   </p>
 <% end %>
-
+<div>
 <%= link_to 'Edit', edit_submission_path(@submission) %> |
 <%= link_to 'Back', submissions_path %>
+</div>
+
+<br>
+
+<p>
+  <strong>Body:</strong>
+  <%= raw @submission.body %>
+</p>
