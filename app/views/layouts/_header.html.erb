@@ -30,11 +30,3 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>
-
-
-<% if current_user %>
-  Signed in as <%= current_user.name %>
-  <%= link_to "Sign out", signout_path %>
-<% else %>
-  <%= link_to "Sign in", "/auth/google_oauth2" %>
-<% end %>
