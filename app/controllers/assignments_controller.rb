@@ -9,9 +9,11 @@ class AssignmentsController < ApplicationController
     @assignments = Assignment.where(user_id: current_user.id).all
   end
 
+
   # GET /assignments/1
   # GET /assignments/1.json
   def show
+    @submissions = Submission.where(assignment_id: current_assignment.id).all
   end
 
   # GET /assignments/new
@@ -73,6 +75,10 @@ class AssignmentsController < ApplicationController
       if current_user.teacher == false
         redirect_to root_path, notice: "Not authorized"
       end
+    end
+
+    def current_assignment
+      @current_assignment ||= Assignment.find(params[:id])
     end
 
     def correct_user
