@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :submissions
+
   # Static pages
   root to: 'pages#home'
   get '/about' => 'pages#about'
