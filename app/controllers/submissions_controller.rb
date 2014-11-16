@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   # GET /submissions
   # GET /submissions.json
@@ -14,7 +15,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/new
   def new
-    @submission = Submission.new
+    @submission = current_user.submissions.build #Submission.new
   end
 
   # GET /submissions/1/edit
@@ -24,7 +25,7 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   # POST /submissions.json
   def create
-    @submission = Submission.new(submission_params)
+    @submission = current_user.submissions.build(submission_params) #Submission.new(submission_params)
 
     respond_to do |format|
       if @submission.save
@@ -65,6 +66,11 @@ class SubmissionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
       @submission = Submission.find(params[:id])
+    end
+
+    def correct_user
+      @submission = current_user.submissions.find_by(id: params[:id])
+      redirect_to submissions_path, notice: "Not authorized to edit this submission" if @submission.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
