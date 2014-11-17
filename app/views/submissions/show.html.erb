@@ -1,29 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <h1><%= @submission.title %></h1>
+    </div>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @submission.title %>
-</p>
+  <div class="panel-body">
+    <p><strong>Body:</strong></p><br>
+    <%= raw @submission.body %>
+  </div>
 
-<p>
-  <strong>Submitted:</strong>
-  <%= @submission.submitted %>
-</p>
+  <div class="panel-footer">
+    Submitted: <%= @submission.submitted %> |
+    <% if @submission.assignment_id? %>
+      Assignment: <%= @submission.assignment.name %>
+    <% end %>
+  </div>
 
-<% if @submission.assignment_id? %>
-  <p>
-    <strong>Assignment:</strong>
-    <%= @submission.assignment.name %>
-  </p>
-<% end %>
-<div>
-<%= link_to 'Edit', edit_submission_path(@submission) %> |
-<%= link_to 'Back', submissions_path %>
+  <div class="panel-footer">
+    <% if @submission.assignment.work_allowed? %>
+      <%= link_to 'Edit', edit_submission_path(@submission) %> |
+    <% end %>
+    <%= link_to 'Back', submissions_path %>
+  </div>
 </div>
-
-<br>
-
-<p>
-  <strong>Body:</strong>
-  <%= raw @submission.body %>
-</p>

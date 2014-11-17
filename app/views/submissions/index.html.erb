@@ -19,7 +19,6 @@
         <td><%= submission.submitted %></td>
         <td><% if submission.assignment_id? %><%= submission.assignment.name %><% end %></td>
         <td><%= link_to 'Show', submission %></td>
-        <td><%= link_to 'Edit', edit_submission_path(submission) %></td>
       </tr>
     <% end %>
   </tbody>
