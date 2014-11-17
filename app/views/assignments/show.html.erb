@@ -1,16 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <button type="button" class="btn btn-default">
-    <%= link_to "Submit for this assignment!", new_submission_path(:assignment_id => @assignment.id) %>
-  </button>
-</p>
-<br />
+<% if @assignment.work_allowed? %>
+  <p>
+    <button type="button" class="btn btn-default">
+      <%= link_to "Submit for this assignment!", new_submission_path(:assignment_id => @assignment.id) %>
+    </button>
+  </p>
+  <br />
+<% end %>
 <p>
   <strong>Name:</strong>
   <%= @assignment.name %>
 </p>
 
+<div>
+  <p>
+    <strong>Prompt:</strong>
+  </p>
+  <%= raw @assignment.prompt %>
+</div>
+<br>
 <p>
   <strong>Work Allowed:</strong>
   <%= @assignment.work_allowed %>
@@ -18,8 +27,8 @@
 
 <% if current_user.id == @assignment.user_id %>
 
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+  <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+  <%= link_to 'Back', assignments_path %>
 
   <h1>Listing submissions</h1>
 
