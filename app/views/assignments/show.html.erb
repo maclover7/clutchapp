@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <% if @assignment.work_allowed? %>
   <p>
     <button type="button" class="btn btn-default">
@@ -8,28 +6,32 @@
   </p>
   <br />
 <% end %>
-<p>
-  <strong>Name:</strong>
-  <%= @assignment.name %>
-</p>
 
-<div>
-  <p>
-    <strong>Prompt:</strong>
-  </p>
-  <%= raw @assignment.prompt %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <h1><%= @assignment.name %></h1>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <p><strong>Prompt:</strong></p><br>
+    <%= raw @assignment.prompt %>
+  </div>
+
+
+    <div class="panel-footer">
+      Work Allowed: <%= @assignment.work_allowed %>
+    </div>
+    <div class="panel-footer">
+      <% if current_user.id == @assignment.user_id %>
+        <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+        <%= link_to 'Back', assignments_path %>
+      <% end %>
+    </div>
 </div>
-<br>
-<p>
-  <strong>Work Allowed:</strong>
-  <%= @assignment.work_allowed %>
-</p>
 
 <% if current_user.id == @assignment.user_id %>
-
-  <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-  <%= link_to 'Back', assignments_path %>
-
   <h1>Listing submissions</h1>
 
   <table class="table">
@@ -51,7 +53,6 @@
           <td><%= submission.submitted %></td>
           <td><% if submission.user_id? %><%= submission.user.name %><% end %></td>
           <td><%= link_to 'Show', submission %></td>
-          <td><%= link_to 'Edit', edit_submission_path(submission) %></td>
         </tr>
       <% end %>
     </tbody>
