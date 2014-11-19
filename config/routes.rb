@@ -9,21 +9,15 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'auth/failure', to: redirect('/')
 
+  # Submission Scaffolds
+  resources :assignments
+  resources :submissions
 
   # English
   get '/english' => 'pages#english'
-  scope '/english' do
-
-    # Scaffolds
-    resources :assignments
-    resources :submissions
-  end
 
   # Music
   get '/music' => 'pages#music'
-  scope '/music' do
-    # Static Pages
-  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
