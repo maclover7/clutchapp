@@ -10,15 +10,19 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
 
 
-  # Clutch
+  # English
+  get '/english' => 'pages#english'
   scope '/english' do
-
-    # Static pages
-    get '/' =>'pages#english'
 
     # Scaffolds
     resources :assignments
     resources :submissions
+  end
+
+  # Music
+  get '/music' => 'pages#music'
+  scope '/music' do
+    # Static Pages
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
