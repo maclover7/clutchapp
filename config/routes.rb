@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
 
-  resources :submissions
-
   # Static pages
   root to: 'pages#home'
   get '/about' => 'pages#about'
-
-  # Scaffolds
-  resources :assignments
 
   # Auth
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'auth/failure', to: redirect('/')
+
+
+  # Clutch
+  scope '/clutch' do
+
+    # Scaffolds
+    resources :assignments
+    resources :submissions
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
