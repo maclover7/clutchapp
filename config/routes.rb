@@ -11,7 +11,10 @@ Rails.application.routes.draw do
 
 
   # Clutch
-  scope '/clutch' do
+  scope '/english' do
+
+    # Static pages
+    get '/' =>'pages#english'
 
     # Scaffolds
     resources :assignments
