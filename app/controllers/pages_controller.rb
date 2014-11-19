@@ -7,4 +7,7 @@ class PagesController < ApplicationController
 
   def english
   end
+
+  def music
+  end
 end
