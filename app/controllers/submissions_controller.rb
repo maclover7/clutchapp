@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update]
+  before_action :login_required
   before_action :correct_user, only: [:show, :edit, :update]
 
   # GET /submissions

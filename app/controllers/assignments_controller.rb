@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :login_required
   before_action :is_teacher, only: [:index, :new]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
