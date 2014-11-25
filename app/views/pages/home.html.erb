@@ -7,7 +7,7 @@
     <h2>Pages#home</h2>
     <p>Find me in app/views/pages/home.html.erb</p>
 
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    <p><%= link_to "About", about_path, class: "btn btn-primary btn-lg", role: "button"%></p>
 
     <% if current_user.try(:teacher?) %>
       You are a teacher!
