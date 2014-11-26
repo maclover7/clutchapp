@@ -4,10 +4,36 @@
       <h1>Welcome back <%= current_user.name %>!</h1>
     <% end %>
 
-    <h2>Pages#home</h2>
-    <p>Find me in app/views/pages/home.html.erb</p>
+    <h2>Today is <%= Time.now.strftime("%A, %B %d, %Y") %>.</h2>
 
     <p><%= link_to "About", about_path, class: "btn btn-primary btn-lg", role: "button"%></p>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>...</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>...</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>...</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <% if current_user.try(:teacher?) %>
       You are a teacher!
@@ -15,6 +41,6 @@
   </div>
 </div>
 
-<h1><%= Time.now.strftime("%A, %B %d, %Y")  %></h1>
+<h1></h1>
 
 <!--<link href="http://refills.bourbon.io/stylesheets/all.css" rel="stylesheet" type="text/css">-->
