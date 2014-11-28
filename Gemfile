@@ -14,7 +14,7 @@ gem 'spring',        group: :development
 # Clutch Dependencies
 gem 'figaro'
 gem 'omniauth-google-oauth2'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.1.1.0' #gem 'bootstrap-sass'
 
 # Summernote Dependencies
 gem "font-awesome-rails"
