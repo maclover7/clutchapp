@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # Submission Scaffolds
   resources :assignments
-  resources :submissions
+  resources :submissions, except: :destroy
 
   # Announcements
   resources :announcements
