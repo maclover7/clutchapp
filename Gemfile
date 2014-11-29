@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Rails Dependencies
 gem 'rails', '4.1.7'
 gem 'sass-rails', '~> 4.0.3'
@@ -31,6 +30,7 @@ end
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'thin'
 end
 
 
