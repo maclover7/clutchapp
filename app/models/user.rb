@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :assignments
   has_many :submissions
+  has_many :announcements
 
   # Omniauth stuff
   def self.find_for_google_oauth2(auth, signed_in_resource=nil)
