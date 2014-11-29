@@ -9,7 +9,7 @@
 
   <div class="panel-body">
     <p><strong>Body:</strong></p><br>
-    <%= @announcement.body %>
+    <%= raw @announcement.body %>
   </div>
   <div class="panel-footer">
     <% if current_user.id == @announcement.user_id %>
