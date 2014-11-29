@@ -6,8 +6,18 @@
 
     <h2>Today is <%= Time.now.strftime("%A, %B %d, %Y") %>.</h2>
 
-    <p><%= link_to "About", about_path, class: "btn btn-primary btn-lg", role: "button"%></p>
+    <p><%= link_to "About", about_path, class: "btn btn-primary btn-lg", role: "button" %></p>
 
+    <% if current_user.try(:teacher?) %>
+      <p><%= link_to new_assignment_path, class: "btn btn-primary btn-lg", role: "button" do %>
+        <span class="glyphicon glyphicon-plus"></span>
+        Create Assignment
+      <% end %></p>
+    <% end %>
+
+    <br />
+
+    <h2>Announcements</h2>
     <div class="row">
       <% @announcements.each do |announcement| %>
         <div class="col-sm-6 col-md-4">
@@ -15,10 +25,12 @@
             <div class="caption">
               <h3><%= announcement.name %></h3>
               <p><%= announcement.body %></p>
-              <p>
-                <%= link_to "Edit", edit_announcement_path(announcement), :class => "btn btn-primary" %>
-                <%= link_to "Destroy", announcement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-primary" %>
-              </p>
+              <% if current_user.id = @announcement.user_id %>
+                <p>
+                  <%= link_to "Edit", edit_announcement_path(announcement), :class => "btn btn-primary", role: "button" %>
+                  <%= link_to "Destroy", announcement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-primary", role: "button" %>
+                </p>
+              <% end %>
             </div><!-- ./caption -->
           </div><!-- ./thumbnail -->
         </div> <!-- ./col-sm-6 col-md-4 -->
@@ -31,21 +43,4 @@
   </div>
 </div>
 
-<h1></h1>
-
 <!--<link href="http://refills.bourbon.io/stylesheets/all.css" rel="stylesheet" type="text/css">-->
-
-
-
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img data-src="holder.js/300x300" alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-</div>
