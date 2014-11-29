@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :announcements
-
   # Static pages
   root to: 'pages#home'
   get '/about' => 'pages#about'
@@ -15,10 +13,11 @@ Rails.application.routes.draw do
   resources :assignments
   resources :submissions
 
-  # English
-  get '/english' => 'pages#english'
+  # Announcements
+  resources :announcements
 
-  # Music
+  # Departments
+  get '/english' => 'pages#english'
   get '/music' => 'pages#music'
 
   # The priority is based upon order of creation: first created -> highest priority.
