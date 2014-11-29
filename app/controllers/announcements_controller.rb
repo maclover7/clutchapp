@@ -1,5 +1,7 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+  before_action :login_required
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /announcements
   # GET /announcements.json
@@ -14,7 +16,7 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/new
   def new
-    @announcement = Announcement.new
+    @announcement = current_user.announcements.build #Announcement.new
   end
 
   # GET /announcements/1/edit
@@ -24,7 +26,7 @@ class AnnouncementsController < ApplicationController
   # POST /announcements
   # POST /announcements.json
   def create
-    @announcement = Announcement.new(announcement_params)
+    @announcement = current_user.announcements.build(announcement_params) #Announcement.new(announcement_params)
 
     respond_to do |format|
       if @announcement.save
@@ -67,8 +69,13 @@ class AnnouncementsController < ApplicationController
       @announcement = Announcement.find(params[:id])
     end
 
+    def correct_user
+      @announcement = current_user.announcements.find_by(id: params[:id])
+      redirect_to announcements_path, notice: "Not authorized to edit this announcement" if @announcement.nil?
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:name, :body)
+      params.require(:announcement).permit(:name, :body, :user_id)
     end
 end
