@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'auth/failure', to: redirect('/')
 
+  # Admin
+  mount Upmin::Engine => '/admin'
+
   # Submission Scaffolds
   resources :assignments
   resources :submissions

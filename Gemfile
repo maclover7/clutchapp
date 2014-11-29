@@ -16,6 +16,7 @@ gem 'spring',        group: :development
 gem 'figaro'
 gem 'omniauth-google-oauth2'
 gem 'bootstrap-sass', '3.1.1.0' #gem 'bootstrap-sass'
+gem 'upmin-admin'
 
 # Summernote Dependencies
 gem "font-awesome-rails"
