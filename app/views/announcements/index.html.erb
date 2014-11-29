@@ -7,7 +7,7 @@
           <div class="thumbnail">
             <div class="caption">
               <h3><%= announcement.name %></h3>
-              <p><%= announcement.body %></p>
+              <p><%= raw announcement.body %></p>
               <p>
                 <%= link_to "Edit", edit_announcement_path(announcement), :class => "btn btn-primary" %>
                 <%= link_to "Destroy", announcement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-primary" %>
