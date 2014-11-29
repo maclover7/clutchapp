@@ -9,31 +9,21 @@
     <p><%= link_to "About", about_path, class: "btn btn-primary btn-lg", role: "button"%></p>
 
     <div class="row">
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3>Thumbnail label</h3>
-            <p>...</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3>Thumbnail label</h3>
-            <p>...</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3>Thumbnail label</h3>
-            <p>...</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      <% @announcements.each do |announcement| %>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3><%= announcement.name %></h3>
+              <p><%= announcement.body %></p>
+              <p>
+                <%= link_to "Edit", edit_announcement_path(announcement), :class => "btn btn-primary" %>
+                <%= link_to "Destroy", announcement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-primary" %>
+              </p>
+            </div><!-- ./caption -->
+          </div><!-- ./thumbnail -->
+        </div> <!-- ./col-sm-6 col-md-4 -->
+      <% end %>
+    </div><!-- ./row -->
 
     <% if current_user.try(:teacher?) %>
       You are a teacher!
