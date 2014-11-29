@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     @announcements = Announcement.all
-    current_user.update_attribute :admin, true
+    current_user.update_attribute :teacher, true
   end
 
   def about
