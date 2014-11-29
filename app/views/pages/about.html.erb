@@ -1,2 +1,11 @@
-<h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+<div class="jumbotron">
+  <div class="container">
+    <% if current_user %>
+      <h1>Welcome back <%= current_user.name %>!</h1>
+    <% end %>
+
+    <h2>About</h2>
+    <p>Paperclip was created in late 2014. It is powered by a Ruby on Rails tech stack with PostgreSQL as its database.</p>
+    <p>The code is open sourced on <a href="https://github.com/maclover7/paperclip">GitHub</a>.</p>
+  </div>
+</div>
