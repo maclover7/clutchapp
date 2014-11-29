@@ -1,25 +1,29 @@
-<%= form_for(@announcement) do |f| %>
-  <% if @announcement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+<div class="panel-body">
+  <%= form_for(@announcement) do |f| %>
+    <% if @announcement.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
 
-      <ul>
-      <% @announcement.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @announcement.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Create", :class => "btn btn-primary" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
