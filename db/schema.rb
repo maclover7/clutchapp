@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129161231) do
+ActiveRecord::Schema.define(version: 20141129193616) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -51,8 +51,9 @@ ActiveRecord::Schema.define(version: 20141129161231) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-    t.boolean  "teacher",    default: false
-    t.boolean  "admin",      default: false
+    t.boolean  "teacher",      default: false
+    t.boolean  "admin",        default: false
+    t.boolean  "can_announce", default: false
   end
 
 end
