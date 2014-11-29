@@ -1,6 +1,7 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
   before_action :login_required
+  before_action :can_announce, only: [:new]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /announcements
@@ -67,6 +68,12 @@ class AnnouncementsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_announcement
       @announcement = Announcement.find(params[:id])
+    end
+
+    def can_announce
+      if current_user.can_announce == false
+        redirect_to root_path, notice: "Not authorized"
+      end
     end
 
     def correct_user
