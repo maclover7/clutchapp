@@ -32,12 +32,17 @@
         <% if current_user %>
           <% if current_user.admin == true && current_user.teacher == true %>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Actions <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Actions <span class="glyphicon glyphicon-cog"></span><!--<span class="glyphicon glyphicon-cogcaret"></span>--></a>
               <ul class="dropdown-menu" role="menu">
                 <li>
                     <%= link_to upmin_path do %>
-                      <span class="glyphicon glyphicon-off"></span> Admin
+                      <span class="glyphicon glyphicon-off"></span> Admin Dashboard
                     <% end %>
+                </li>
+                <li>
+                  <%= link_to assignment_path do %>
+                    <span class="glyphicon glyphicon-align-justify"></span> My Assignments
+                  <% end %>
                 </li>
                 <li>
                   <%= link_to new_assignment_path do %>
