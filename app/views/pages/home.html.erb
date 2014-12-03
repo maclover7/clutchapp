@@ -11,7 +11,7 @@
     <% if current_user.try(:teacher?) %>
       <p><%= link_to new_assignment_path, class: "btn btn-primary btn-lg", role: "button" do %>
         <span class="glyphicon glyphicon-plus"></span>
-        Create Assignment
+        New Assignment
       <% end %></p>
     <% end %>
 
