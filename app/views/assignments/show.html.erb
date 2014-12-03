@@ -56,7 +56,7 @@
           <td><% if submission.user_id? %><%= submission.user.name %><% end %></td>
           <td><%= submission.submitted %></td>
           <td><%= submission.body.scan(/[\w-]+/).size %></td>
-          <td><%= submission.updated_at %></td>
+          <td><%= submission.updated_at.strftime("%m/%d/%y", "%r") %></td>
           <td><%= link_to 'Show', submission %></td>
         </tr>
       <% end %>
