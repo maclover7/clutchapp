@@ -17,10 +17,10 @@
       <tr>
         <td><%= submission.title %></td>
         <td>
-          <% if submission.submitted? %>
-            <span class="label label-success">Submitted</span>
-          <% else %>
+          <% if submission.submitted_at == nil %>
             <span class="label label-default">Draft</span>
+          <% else %>
+            <span class="label label-success">Submitted</span>
           <% end %>
         </td>
         <td><%= submission.body.scan(/[\w-]+/).size %></td>
