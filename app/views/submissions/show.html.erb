@@ -11,10 +11,10 @@
   </div>
 
   <div class="panel-footer">
-    <% if @submission.submitted? %>
-      <span class="label label-success">Submitted</span>
-    <% else %>
+    <% if @submission.submitted_at == nil %>
       <span class="label label-default">Draft</span>
+    <% else %>
+      <span class="label label-success">Submitted</span>
     <% end %> |
     <% if @submission.assignment_id? %>
       Assignment: <%= @submission.assignment.name %>
