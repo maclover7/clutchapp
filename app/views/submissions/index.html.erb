@@ -5,7 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Word count</th>
-      <th>Submitted</th>
+      <th>Status</th>
       <th>Assignment</th>
       <th colspan="3"></th>
     </tr>
@@ -16,7 +16,13 @@
       <tr>
         <td><%= submission.title %></td>
         <td><%= submission.body.scan(/[\w-]+/).size %></td>
-        <td><%= submission.submitted %></td>
+        <td>
+          <% if submission.submitted? %>
+            <span class="label label-success">Submitted</span>
+          <% else %>
+            <span class="label label-default">Draft</span>
+          <% end %>
+        </td>
         <td><% if submission.assignment_id? %><%= submission.assignment.name %><% end %></td>
         <td><%= link_to 'Show', submission %></td>
       </tr>
