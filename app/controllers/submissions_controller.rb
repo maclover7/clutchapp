@@ -28,7 +28,7 @@ class SubmissionsController < ApplicationController
   def create
     @submission = current_user.submissions.build(submission_params.merge(assignment_id: params[:assignment_id])) #Submission.new(submission_params)
 
-    @submission.submitted_at = Time.zone.now if submitting?
+    @submission.submitted_at = Time.now if submitting?
 
     respond_to do |format|
       if @submission.save
@@ -44,7 +44,7 @@ class SubmissionsController < ApplicationController
   # PATCH/PUT /submissions/1
   # PATCH/PUT /submissions/1.json
   def update
-    @submission.submitted_at = Time.zone.now if submitting?
+    @submission.submitted_at = Time.now if submitting?
 
     respond_to do |format|
       if @submission.update(submission_params)
