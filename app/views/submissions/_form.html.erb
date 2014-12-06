@@ -31,9 +31,10 @@
         <p>YOU <b>WILL NOT</b> be able to edit your essay once this is checked and saved.</p><br>
       </div>
       <div class="form-group">
-        <%= f.submit "Save", :class => "btn btn-primary" %>
+        <%= f.submit "Submit", :class => "btn btn-primary" %>
+        <%= f.submit "Save as a Draft", :class => "btn btn-deafult" %>
       </div>
-      
+
     <% end %>
   <% else %>
     Work isn't allowed on this assignment. Please see your teacher for assistance if needed.

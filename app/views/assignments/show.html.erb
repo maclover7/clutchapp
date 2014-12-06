@@ -44,7 +44,7 @@
           <tr>
             <th>Title</th>
             <th>Student Name</th>
-            <th>Submitted</th>
+            <th>Status</th>
             <th>Word count</th>
             <th>Updated at</th>
             <th colspan="3"></th>
@@ -56,7 +56,13 @@
             <tr>
               <td><%= submission.title %></td>
               <td><% if submission.user_id? %><%= submission.user.name %><% end %></td>
-              <td><%= submission.submitted %></td>
+              <td>
+                <% if submission.submitted? %>
+                  <span class="label label-success">Submitted</span>
+                <% else %>
+                  <span class="label label-default">Draft</span>
+                <% end %>
+              </td>
               <td><%= submission.body.scan(/[\w-]+/).size %></td>
               <td><%= submission.updated_at.strftime("%m/%d/%y, %r") %></td>
               <td><%= link_to 'Show', submission %></td>

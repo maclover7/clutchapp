@@ -28,6 +28,8 @@ class SubmissionsController < ApplicationController
   def create
     @submission = current_user.submissions.build(submission_params.merge(assignment_id: params[:assignment_id])) #Submission.new(submission_params)
 
+    @submission.submitted_at = Time.zone.now if submitting?
+
     respond_to do |format|
       if @submission.save
         format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
@@ -42,6 +44,8 @@ class SubmissionsController < ApplicationController
   # PATCH/PUT /submissions/1
   # PATCH/PUT /submissions/1.json
   def update
+    @submission.submitted_at = Time.zone.now if submitting?
+
     respond_to do |format|
       if @submission.update(submission_params)
         format.html { redirect_to @submission, notice: 'Submission was successfully updated.' }
@@ -72,6 +76,10 @@ class SubmissionsController < ApplicationController
     def correct_user
       @submission = current_user.submissions.find_by(id: params[:id])
       redirect_to submissions_path, notice: "Not authorized to edit this submission" if @submission.nil?
+    end
+
+    def submitting?
+      params[:commit] == "Submit"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
