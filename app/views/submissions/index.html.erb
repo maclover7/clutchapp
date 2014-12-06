@@ -4,8 +4,9 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Word count</th>
       <th>Status</th>
+      <th>Word count</th>
+      <th>Last updated at</th>
       <th>Assignment</th>
       <th colspan="3"></th>
     </tr>
@@ -15,7 +16,6 @@
     <% @submissions.each do |submission| %>
       <tr>
         <td><%= submission.title %></td>
-        <td><%= submission.body.scan(/[\w-]+/).size %></td>
         <td>
           <% if submission.submitted? %>
             <span class="label label-success">Submitted</span>
@@ -23,6 +23,8 @@
             <span class="label label-default">Draft</span>
           <% end %>
         </td>
+        <td><%= submission.body.scan(/[\w-]+/).size %></td>
+        <td><%= submission.updated_at.strftime("%m/%d/%y, %r") %></td>
         <td><% if submission.assignment_id? %><%= submission.assignment.name %><% end %></td>
         <td><%= link_to 'Show', submission %></td>
       </tr>
