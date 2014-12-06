@@ -1,5 +1,8 @@
 <div class="panel-body">
-  <% if @submission.assignment.work_allowed? %>
+  <% if @submission.submitted? %>
+    You have already submitted, so more work is prohibited. Please see your teacher for assistance if needed.
+
+  <% elsif @submission.assignment.work_allowed? %>
     <%= form_for(@submission) do |f| %>
       <% if @submission.errors.any? %>
         <div id="error_explanation">
@@ -25,13 +28,7 @@
         <%= f.text_area :body, class:'summernote' %>
       </div>
       <div class="form-group">
-        <%= f.label :submitted %>
-        <%= f.check_box :submitted, class: "form-control" %>
-        <p>ONLY CHECK THIS BOX WHEN YOU ARE READY TO SUBMIT YOUR ESSAY.</p>
-        <p>YOU <b>WILL NOT</b> be able to edit your essay once this is checked and saved.</p><br>
-      </div>
-      <div class="form-group">
-        <%= f.submit "Submit", :class => "btn btn-primary" %>
+        <%= f.submit "Submit to teacher", :class => "btn btn-primary" %>
         <%= f.submit "Save as a Draft", :class => "btn btn-default" %>
       </div>
 

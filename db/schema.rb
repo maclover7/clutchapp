@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206171518) do
+ActiveRecord::Schema.define(version: 20141206175516) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20141206171518) do
   create_table "submissions", force: true do |t|
     t.string   "title"
     t.text     "body"
-    t.boolean  "submitted"
     t.integer  "assignment_id"
     t.integer  "user_id"
     t.datetime "created_at"

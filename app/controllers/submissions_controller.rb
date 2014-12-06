@@ -79,11 +79,11 @@ class SubmissionsController < ApplicationController
     end
 
     def submitting?
-      params[:commit] == "Submit"
+      params[:commit] == "Submit to teacher"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:title, :body, :submitted, :assignment_id, :user_id)
+      params.require(:submission).permit(:title, :body, :assignment_id, :user_id, :submitted_at)
     end
 end
