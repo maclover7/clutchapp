@@ -1,5 +1,5 @@
 <div class="panel-body">
-  <% if @submission.submitted? %>
+  <% if @submission.submitted_at? %>
     You have already submitted, so more work is prohibited. Please see your teacher for assistance if needed.
 
   <% elsif @submission.assignment.work_allowed? %>
